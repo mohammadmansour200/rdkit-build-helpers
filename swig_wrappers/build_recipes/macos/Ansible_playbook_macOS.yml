@@ -230,7 +230,7 @@
       ansible.builtin.shell: if [ ! -e boost_{{ BOOST_VERSION }}.tar.bz2 ] || \
           [ `shasum -a 256 boost_{{ BOOST_VERSION }}.tar.bz2 | awk "{print \\$1}"` != {{ BOOST_CHKSUM }} ]; then \
           rm -f boost_{{ BOOST_VERSION }}.tar.bz2; \
-          curl -L -O https://boostorg.jfrog.io/artifactory/main/release/`echo {{ BOOST_VERSION }} | sed "s|_|.|g"`/source/boost_{{ BOOST_VERSION }}.tar.bz2 && \
+          curl -L -O https://sourceforge.net/projects/boost/files/boost/1.83.0/boost_${BOOST_VERSION}.tar.bz2 && \
             [ `shasum -a 256 boost_{{ BOOST_VERSION }}.tar.bz2 | awk "{print \\$1}"` = {{ BOOST_CHKSUM }} ] || \
             ( >&2 echo "Failed to download boost" && exit 1 ); \
         fi
